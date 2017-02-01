@@ -17,8 +17,6 @@ In this post, I am going to show how to use R to create bar charts with varying 
 Let's have a dataset with one categorical and two quantitative variables. We want to create a bar chart showing values of one of the numerical variables, while using the other numerical variable to produce bars of different widths. Our categorical variable can be groups of people, and the 2 numericals can be some score and quantity of the people.
 
 ```{r}
-# set a working directory
-setwd("C:/oneDrive/chunksR/art1")
 # create a dataframe with 3 groups of people,
 # some score and count of the people
 data <- data.frame(group = c("Heroes", "Villains", "Humans"),
