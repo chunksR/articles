@@ -77,12 +77,17 @@ data$width <- data$count/sum(data$count)
 data$location <- cumsum(data$width) - data$width/2
 
 # create a bar plot
+# first plot the calculated locations on the x axis
+# score still as height of the bars
+# color based on count variable
 ggplot(data, aes(x = location,
                  y = score, 
                  fill = count, 
                  width = width)) +
         geom_bar(stat = "identity") +
+        # make the x axis continuous with desired tick marks and labels
         scale_x_continuous(breaks = data$location, labels = data$group) +
+        # add a chart title
         ggtitle("Ggplot2 bar plot with adjecent bars of varying width")
 
 ```
@@ -98,7 +103,9 @@ Yes, we can!
 Let's start with a basic bar plot again.
 
 ```{r}
+# create a bar plot
 barplot(data$score, names.arg = data$group)
+# change a title
 title("Basic graphics bar plot")
 
 ```
@@ -115,11 +122,15 @@ How to remove spaces between bars? Just set barplot space parameter to 0. We sho
 
 ```{r}
 barplot(data$score,
+        # use variable width
         width = data$width, 
+        # remove spaces between bars
         space = 0, 
+        # plot names of categorical variables
         names.arg = data$group,
+        # add colors
         col = colors()[data$count])
 title("Basic graphics bar plot with varying widths and no spaces")
 ```
 
-As usual with R, there are multiple ways of solving a problem. Whether you should use these kind of charts is another question. The consensus in the academic community would probably say that the widths of the bar charts do not add any real value. On the other hand, in corporate setting, they might come in handy. It is all about personal preferences.
+As usual with R, there are multiple ways of solving a problem. Whether to use these kind of charts is another question. The consensus in the academic community would probably say that the widths of the bar charts do not add any real value. On the other hand, in corporate setting, they might come in handy. It is all about personal preferences.
